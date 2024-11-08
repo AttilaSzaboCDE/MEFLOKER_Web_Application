@@ -1,0 +1,167 @@
+@media (prefers-color-scheme: light) {
+:root {
+    --text: #000000;
+    --background-img: url('../Images/');
+    --background-clr: #fffafd;
+    --primary: #d856e6; /* Ati színe: #4CAF50 */
+    --secondary: #88f584;
+    --accent: #58f3dc;
+    --pri-bg-clr: white; /* used in table */
+    --sec-bg-clr: rgb(243, 243, 243); /* used in table */
+    --table-border-clr: rgb(207, 207, 207); /* used in table */
+    --shadow: rgba(0, 0, 0, 0.1);
+    --car-licence-plate-clr: rgb(86, 166, 197);
+    /*--navbar-hover:;*/
+}
+}
+@media (prefers-color-scheme: dark) {
+:root {
+    --text: #feecf8;
+    --background-img: url('../Images/background.jpg');
+    --background-clr: #050003;
+    --primary: #4CAF50;
+    --secondary: #0e7b0a;
+    --accent: #0ca790;
+    --pri-bg-clr: rgb(35,33,40); /* used in table */
+    --sec-bg-clr: rgb(42, 42, 50); /* used in table */
+    --table-border-clr: #575757; /* used in table */
+    --shadow: rgba(255, 255, 255, 0.3);
+    --car-licence-plate-clr: skyblue;
+    --navbar-hover: burlywood;
+}
+}
+/* source: https://www.realtimecolors.com/?colors=13010d-fffafd-d756e6-88f584-58f3dc&fonts=Inter-Inter */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: var(--background-img);
+    background-color: var(--background-clr);
+    color: var(--text);
+    background-size: cover;
+}
+a {
+    text-decoration: none;
+    color: var(--text);
+}
+.navbar-pry, .navbar-brand, .nav-link{
+    color: var(--text);
+}
+.navbar-main-text {
+    font-size: 1.5rem;
+    color: var(--text);
+}
+.bg-primary, .btn-primary{
+    background: var(--primary);
+    color: var(--text);
+}
+.bg-secondary, .btn-secondary {
+    background: var(--background);
+    color: var(--text);
+}
+.bg-accent, .btn-accent{
+    background: var(--accent);
+    color: var(--text);
+}
+
+#content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#car-licence-plate{
+    border: 0.1em solid var(--car-licence-plate-clr);
+    border-radius: 0.5em;
+    color: var(--car-licence-plate-clr);
+    padding: 0.3em;
+}
+footer {
+    width: 100vw;
+}
+
+.footer-row {
+    max-width: 30em;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+}
+@media (max-width: 800px) {
+    .footer-row {
+      flex-direction: column;
+    }
+}
+.footer-row div {
+    padding: 1em;
+}
+footer h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+footer h2 {
+    font-size: 1.2rem;
+}
+
+footer p{
+    text-align: center;
+}
+.credits {
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: auto;
+}
+.credits h1{
+    text-align: center;
+}
+.credits ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+/* Navbar alapértelmezett szövegszín */
+.navbar a {
+    transition: color 0.3s ease; /* Színváltás animáció */
+  }
+  
+  /* Amikor az egér az elem fölött van */
+  .navbar a:hover {
+    color: var(--navbar-hover); /* Itt adod meg, hogy milyen színű legyen, amikor ráhúzod az egeret */
+  }
+
+  .index_h1{
+    text-align: center;
+  }
+  .index_p{
+    text-align: center;
+  }
+
+
+.glasseffect {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255,255,255,0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(20px);
+    border: solid 1px rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    border-radius: var(--car-card-border-rad);
+}
+
+.fixed-bottom-alert {
+    bottom: 0px;
+    position: fixed;
+    padding: 20px;
+    width: 100%;
+    display: block;
+}
+
+.form-container{
+    max-width: 30em;
+}

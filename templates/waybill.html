@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block nav_buttons %}
+<li class="nav-item">
+    <a class="nav-link" href="{{ url_for('main.index') }}">Kezdőlap</a>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="{{ url_for('calendar.calendar') }}">Naptár nézet</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{{ url_for('waybills.waybill') }}">Menetlevél rögzítése</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{{ url_for('issuereportings.issuereporting') }}">Hiba jelentése</a>
+  </li> 
+  {% endblock %}
+{% block content %}
+<div class="container mt-3 form-container glasseffect">
+  <form method="POST" action="{{ url_for('waybills.waybill') }}" enctype="multipart/form-data" autocomplete="off">
+    <fieldset>
+      <legend>Menetlevél rögzítése</legend>
+      <div class="mb-3">
+        <label for="user" class="form-label">Felhasználónév</label>
+        <!--Valahogy ide kiiratni a felhasználónevet-->
+      </div>
+      <div>
+        <label for="licence_plate" class="form-label">Az autó rendszáma</label>
+        <input type="text" class="form-control" name="licence_plate" id="licence_plate" placeholder="pl.: AABB123">
+      </div>
+      <div class="mb-3">
+        <label for="opening_mileage" class="form-label">Induló km</label>
+        <input type="number" class="form-control" id="opening_mileage" name="opening_mileage">
+      </div>
+      <div class="mb-3">
+        <label for="opening_location" class="form-label">Induló hely</label>
+        <input type="text" class="form-control" id="opening_location" name="opening_location">
+      </div>
+      <div class="mb-3">
+        <label for="closeing_mileage" class="form-label">Zaró km</label>
+        <input type="number" class="form-control" id="closeing_mileage" name="closeing_mileage">
+      </div>
+      <div class="mb-3">
+        <label for="closeing_location" class="form-label">Érkezési hely</label>
+        <input type="text" class="form-control" id="closeing_location" name="closeing_location">
+      </div>
+      <button type="submit" class="btn btn-primary">Mentés</button>
+    </fieldset>
+  </form>
+</div>
+{% endblock %}
+
+
+
+
+
+
+
+

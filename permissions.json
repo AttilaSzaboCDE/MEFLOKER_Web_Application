@@ -1,0 +1,94 @@
+{
+    "roles": {
+
+        "Admin": [  "add_car", 
+                    "display_cars", 
+                    "delete_car", 
+                    "remove_car",
+                    "edit_car",
+                    "add_ticket",
+                    "display_tickets",
+                    "delete_ticket",
+                    "add_issuereporting",
+                    "display_issuereporting",
+                    "display_own_issuereporting",
+                    "edit_issuereporting_status",
+                    "delete_issuereporting",
+                    "create_waybill",
+                    "display_waybills",
+                    "display_own_waybills",
+                    "edit_waybill_status",
+                    "delete_waybill",
+                    "create_reservation",
+                    "display_reservations",
+                    "display_own_reservations",
+                    "delete_reservation",
+                    "delete_own_reservation",
+                    "edit_reservation"
+        ],
+
+        "Manager": ["add_car", 
+                    "display_cars", 
+                    "remove_car", 
+                    "edit_car",
+                    "add_ticket",
+                    "display_tickets",
+                    "delete_ticket",
+                    "add_issuereporting",
+                    "display_issuereporting",
+                    "display_own_issuereporting",
+                    "edit_issuereporting_status",
+                    "create_waybill",
+                    "display_waybills",
+                    "display_own_waybills",
+                    "edit_waybill_status",
+                    "create_reservation",
+                    "display_reservations",
+                    "display_own_reservations",
+                    "delete_reservation",
+                    "delete_own_reservation",
+                    "edit_reservation"
+        ],
+        
+        "User": [   "display_cars",
+                    "add_issuereporting",
+                    "display_own_issuereporting",
+                    "create_waybill",
+                    "display_own_waybills",
+                    "create_reservation",
+                    "display_own_reservations",
+                    "delete_own_reservation"
+        ]
+    },
+    "descriptions": {
+
+        "add_car": "Autó hozzáadása",
+        "display_cars": "Autó megtekintése",
+        "delete_car": "Autó végleges törlése rendszerből",
+        "remove_car": "Autó stástuszának törlvére állítása",
+        "edit_car": "Autó módosítása",
+
+        "add_ticket": "Matrica hozzáadása autókhoz",
+        "display_tickets": "Matricák kilistázása",
+        "delete_ticket": "Matrica végleges törlése",
+
+        "add_issuereporting": "Hiba jelentés küldése",
+        "display_issuereporting": "Hiba jelentések kilistázása",
+        "display_own_issuereporting": "Saját hiba jelentések kilistázása",
+        "edit_issuereporting_status": "Hiba jelentés státuszának módosítása",
+        "delete_issuereporting": "Hiba jelentés végleges törlése",
+        
+        "create_waybill": "Menetlevél létrehozása",
+        "display_waybills": "Menetlevelek kilistázása",
+        "display_own_waybills": "Saját menetlevelek kilistázása",
+        "edit_waybill_status": "Menetlevél státuszának módosítása",
+        "delete_waybill": "Menetlevél végleges törlése",
+
+        "create_reservation": "Foglalás létrehozása autóra",
+        "display_reservations": "Foglalások kilistázása",
+        "display_own_reservations": "Saját foglalások kilistázása",
+        "delete_reservation": "Foglalás végleges törlése",
+        "delete_own_reservation": "Saját foglalás végleges törlése",
+        "edit_reservation": "Foglalás módosítása"
+    }
+}

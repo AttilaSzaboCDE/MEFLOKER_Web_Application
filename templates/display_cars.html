@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block nav_buttons %}
+<li class="nav-item">
+    <a class="nav-link" href="{{ url_for('main.index') }}">Kezdőlap</a>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="{{ url_for('calendar.calendar') }}">Naptár nézet</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{{ url_for('waybills.waybill') }}">Menetlevél rögzítése</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{{ url_for('issuereportings.issuereporting') }}">Hiba jelentése</a>
+  </li> 
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5 car-item-container">
+    <h1>Autók listája</h1>
+    
+    {% for car in cars %}
+    <a href="{{ url_for('cars.display_car', car_licence_plate=car.licence_plate) }}">
+    <div class="car-item glasseffect">
+        <div class="car-item-left">
+          <img src="{{ url_for('static', filename='uploads/' + (car.image if car.image else 'placeholder.jpg')) }}" alt="Kép az autóról">
+        </div>
+        <div class="car-item-middle">
+            <h3 id="car-brand">{{ car.brand }}</h3>
+            <h5 id="car-model">{{ car.model }}</h5>
+            <h6 id="car-licence-plate">{{ car.licence_plate }}</h6>
+        </div>
+        <div class="car-item-right">
+
+        </div>
+    </div>
+    </a>
+    {% endfor %}
+</div>
+
+
+{% endblock %}

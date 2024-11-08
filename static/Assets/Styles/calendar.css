@@ -1,0 +1,59 @@
+
+/* Táblázat konténer */
+.calendar-container {
+    overflow-x: auto; /* Görgethetővé teszi a táblázatot vízszintesen */
+    justify-content: center;
+    align-items: center;
+}
+
+.calendar-table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 1000px; /* Minimális szélesség (szükséges a görgetéshez kisebb képernyőkön) */
+}
+.calendar-table tr:nth-child(odd), .fixed-column:nth-child(odd) {
+    background-color: var(--sec-bg-clr);
+}
+.calendar-table tr:nth-child(even), .fixed-column:nth-child(even) {
+    background-color: var(--pri-bg-clr);
+}
+
+.calendar-table th,
+.calendar-table td {
+    border: 1px solid var(--table-border-clr);
+    padding: 8px;
+    text-align: center;
+}
+
+/* Fixált bal és jobb oszlop stílus */
+.fixed-column {
+    position: sticky;
+    left: 0; /* Fixálja az első oszlopot a bal oldalon */
+    z-index: 1;
+}
+
+.fixed-column.left{
+    width: 30vmin;
+}
+
+/* Fixált jobb oszlop nagyobb képernyőkön */
+.fixed-column.right {
+    position: sticky;
+    right: 0;
+    z-index: 1;
+    display: none; /* Alapértelmezés szerint elrejtve */
+    display: inline-block;
+}
+
+/* Napok cellái */
+.scrollable-day {
+    width: 900px;
+}
+
+
+/* Csak nagy képernyőkön jelenik meg a jobb oldali fix oszlop */
+@media (min-width: 1024px) {
+    .fixed-column.right {
+        display: table-cell;
+    }
+}

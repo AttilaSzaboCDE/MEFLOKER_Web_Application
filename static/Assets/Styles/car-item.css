@@ -1,0 +1,56 @@
+.car-item-container {
+    max-width: 700px;
+}
+.car-item-container a{
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+.car-item-container a:hover{
+    transform: translateY(-4px) scale(1.05);
+}
+
+.car-item {
+    height: 7em;
+    overflow: hidden;
+    margin: 1em 0.2em 1em 0.2em;
+    display: flex;
+    max-width: 40em;
+    border-radius: var(--car-card-border-rad);
+}
+.car-item-left {
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: var(--car-card-border-rad);
+    overflow: hidden;
+}
+
+.car-item-left img{
+    height: 100%;
+}
+
+.car-item-middle{
+    margin: 0 0 0 1em;
+    top: 0;
+}
+
+
+/* car */
+.car-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: var(--car-card-border-rad);
+    overflow: hidden;
+}
+.car-img img {
+    width: 100%;
+}
+.car-buttons {
+    padding: 1em;
+}
+.car-details {
+    padding: 1em;
+}

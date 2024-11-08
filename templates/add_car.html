@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block nav_buttons %}
+<li class="nav-item">
+    <a class="nav-link" href="{{ url_for('main.index') }}">Kezdőlap</a>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="{{ url_for('calendar.calendar') }}">Naptár nézet</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{{ url_for('waybills.waybill') }}">Menetlevél rögzítése</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{{ url_for('issuereportings.issuereporting') }}">Hiba jelentése</a>
+  </li> 
+{% endblock %}
+
+{% block content %}
+<div class="container mt-3 form-container glasseffect">
+    <form method="POST" action="{{ url_for('cars.add_car') }}" enctype="multipart/form-data" autocomplete="off">
+        <fieldset>
+          <legend>Autó hozzáadása a rendszerhez</legend>
+          <div class="mb-3">
+            <label for="licence_plate" class="form-label">Az autó rendszáma</label>
+            <input type="text" class="form-control" name="licence_plate" id="licence_plate" placeholder="pl.: AABB123">
+          </div>
+          <div class="mb-3">
+            <label for="brand" class="form-label">Az autó márkája</label>
+            <input type="text" class="form-control" name="brand" id="brand" placeholder="pl.: Volkswagen">
+          </div>
+          <div class="mb-3">
+            <label for="model" class="form-label">Az autó típusa</label>
+            <input type="text" class="form-control" name="model" id="model" placeholder="pl.: Golf 1.4 TSI">
+          </div>
+          <div class="mb-3">
+            <label for="type" class="form-label">Kivitel</label>
+            <select class="form-select" id="type" name="type">
+              {% for type in types %}
+                            <option>{{ type }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="fuel" class="form-label">Üzemanyag</label>
+            <select class="form-select" id="fuel" name="fuel">
+              {% for fuel in fuels %}
+                            <option>{{ fuel }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="mileage" class="form-label">Jelenlegi kilóméter óra állás</label>
+            <input type="number" class="form-control" id="mileage" name="mileage">
+          </div>
+          <div class="mb-3">
+            <label for="technical_inspection_end_date" class="form-label">Műszaki lejáratának dátuma</label>
+            <input type="date" class="form-control" is="technical_inspection_end_date" name="technical_inspection_end_date">
+          </div>
+          
+          <div class="mb-3">
+            <label for="image" class="form-label">Kép az autóról</label>
+            <input class="form-control" type="file" id="image" name="image">
+          </div>
+          <div class="mb-3">
+            <label for="status" class="form-label">Státusz</label>
+            <select class="form-select" id="status" name="status">
+              {% for status in statuses %}
+                  <option>{{ status }}</option>
+              {% endfor %}
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label for="time_stamp" class="form-label">Érvényesség kezdete (ma)</label>
+            <input type="text" class="form-control" id="time_stamp" name="time_stamp" value="{{ datetime.now().strftime('%Y-%m-%d %H:%M:%S') }}" readonly>
+          </div>
+          
+          <button type="submit" class="btn btn-primary">Rögzítés</button>
+        </fieldset>
+      </form>
+    </div>
+
+{% endblock %}

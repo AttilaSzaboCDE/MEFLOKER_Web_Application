@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block nav_buttons %}
+<li class="nav-item">
+    <a class="nav-link" href="{{ url_for('main.index') }}">Kezdőlap</a>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="{{ url_for('calendar.calendar') }}">Naptár nézet</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{{ url_for('waybills.waybill') }}">Menetlevél rögzítése</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{{ url_for('issuereportings.issuereporting') }}">Hiba jelentése</a>
+  </li> 
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5 car-item-container">
+    <h1>Az autó leírása</h1>
+    
+    <div class="glasseffect car">
+        <div class="car-img">
+          <img src="{{ url_for('static', filename='uploads/' + (car.image if car.image else 'placeholder.jpg')) }}" alt="Kép az autóról">
+        </div>
+        <div class="car-buttons">
+            <a class="btn btn-primary" href="">Autó foglalása</a>
+            <a class="btn btn-primary" href="{{ url_for('waybills.waybill') }}">Menetlevél rögzítése</a>
+            <a class="btn btn-secondary" href="">Hiba jelentése</a>
+            <a class="btn btn-warning">Autó szerkesztése</a>
+            <a class="btn btn-danger">Autó törlése</a>
+        </div>
+        <div class="car-details">
+            <h2 id="car-brand">{{ car.brand }}</h2>
+            <h3 id="car-model">{{ car.model }}</h3>
+            <p class="card-text"><strong>Rendszám:</strong> {{ car.licence_plate }}</p>
+            <p class="card-text"><strong>Üzemanyag:</strong> {{ car.fuel }}</p>
+            <p class="card-text"><strong>Kilométeróra állás:</strong> {{ car.mileage }} km</p>
+            <p class="card-text"><strong>Státusz:</strong> {{ car.status }}</p>
+            <p class="card-text"><strong>Műszaki vizsga lejárat:</strong> {{ car.technical_inspection_end_date }}</p>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

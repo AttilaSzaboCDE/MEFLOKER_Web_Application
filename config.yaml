@@ -1,0 +1,4 @@
+client_id: "Az Azure alkalmazásod Client ID értéke"
+client_secret: "Az Azure-ban létrehozott titkos kulcs"
+authority: "https://login.microsoftonline.com/consumers"
+redirect_path: "/auth/callback"

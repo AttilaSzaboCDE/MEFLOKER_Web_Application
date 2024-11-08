@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='Styles/bootstrap.min.css') }}">
+  
+  <script src="{{ url_for('static', filename='Scripts/bootstrap.bundle.min.js') }}"></script>
+
+  <link rel="stylesheet" href="../static/Assets/Styles/login.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='Styles/login.css') }}">
+  <title>Flottakezelő rendszer</title>
+</head>
+<body>
+  <nav class="navbar navbar-expand-sm justify-content-center navbar-pry">
+    <div class="container-fluid">
+      <a class="navbar-brand" style="color: white;">MEFLOKER</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+          
+        </ul>
+      </div>
+    </div>
+</nav>
+<div class="div1">
+  <div class="wrapper">
+      <h2>Bejelentkezés</h2>
+      <button class="microsoft-login-btn" onclick="location.href='YOUR_MICROSOFT_LOGIN_URL'">
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/microsoft.png" alt="Microsoft Icon">
+        Microsoft Login
+      </button>
+  </div>
+</div>
+</body>
+</html>
+
+
+
+

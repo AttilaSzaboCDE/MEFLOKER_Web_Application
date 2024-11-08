@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="{{ url_for('static', filename='Scripts/bootstrap.bundle.min.js') }}"></script>
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='Styles/bootstrap.min.css') }}">    
+    <link rel="stylesheet" href="{{ url_for('static', filename='Styles/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='Styles/car-card.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='Styles/car-item.css') }}">
+    {% block extra_css %}{% endblock %}
+    
+    <title id="title">{% block title %}Flottakezelő rendszer{% endblock %}</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm justify-content-center navbar-pry">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="{{ url_for('main.index') }}">MEFLOKER</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+              {% block nav_buttons %}{% endblock %}
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('cars.display_cars') }}">Autók</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" id="users-name">Admin</a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Menetlevél kezelő</a></li>
+                  <li><a class="dropdown-item" href="{{ url_for('cars.add_car') }}">Autó hozzáadása</a></li>
+                  <li><a class="dropdown-item" href="#">Autó szerkesztése</a></li>
+                  <li><a class="dropdown-item" href="#">Matricák</a></li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" id="users-name">users-name</a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Foglalásaim</a></li>
+                  <li><a class="dropdown-item" href="#">Előzmények</a></li>
+                  <li><a class="dropdown-item" href="#">Kijelentkezés</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+    </nav>
+
+    <div id="content"></div>
+        {% block content %}
+        <!-- This block will be replaced by the child templates -->
+        {% endblock %}
+    </div>
+
+    <!-- Alert üzenetek a képernyő alján -->
+    
+    <div class="fixed-bottom-alert">
+    {% with messages = get_flashed_messages(with_categories=True) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            
+                <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                    {% if message is string %}
+                        {{ message }}  <!-- Ha az üzenet egy string -->
+                    {% elif message is iterable and not message is string %}
+                        {% for text in message %}
+                            {{ text }}<br>  <!-- Ha az üzenet egy lista -->
+                        {% endfor %}
+                    {% endif %}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+    </div>
+
+
+    
+    <footer>
+      <div class="footer-row">
+        <div>
+          <h1>Kapcsolat</h1>
+          <h2>Elérhetőségek</h2>
+          <ul>
+            <li>Email: mefloker@examp.le</li>
+            <li>Telefon: +36(22)000</li>
+          </ul>
+        </div>
+        <div>
+          <h1>Menü</h1>
+          <ul>
+            <li><a href="{{ url_for('cars.display_cars') }}">Autók</a></li>
+            
+          </ul>
+        </div>
+        <div>
+          <h1>Docs</h1>
+          <ul>
+            <li>Kezelési ütmutató</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-row">
+        <div class="credits">
+          <h1>Credits</h1>
+          <ul>
+            <li>Szabó Attila</li>
+            <li>Zámbó Ádám Zoltán</li>
+            <li>Kiss Bálint</li>
+          </ul>
+        </div>
+        
+      </div>
+      
+        
+        <p>© 2024 Project Alpha Studio</p>
+    </footer>
+
+</body>
+</html>

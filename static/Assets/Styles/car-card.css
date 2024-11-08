@@ -1,0 +1,71 @@
+/* CAR CARDS */
+:root{
+    --car-card-height: 17em;
+    --car-card-width: 100%;
+    --car-card-border-rad: 2em;
+}
+.car-card-container {
+    width: min(1000px , 100%);
+    margin: 0 auto;
+    columns: 3 310px;
+    column-gap: 1.3em;
+}
+.car-card-container a{
+    width: var(--car-card-width);
+    height: var(--car-card-height);
+    border-radius: var(--car-card-border-rad);
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: var(--text);
+    transition: transform 0.2s;
+    z-index: 1;
+    margin-bottom: 1.3em;
+}
+.car-card-container a:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 0 30px var(--shadow);
+    z-index: 200;
+}
+.car-card-container a:hover .car-card-body{
+    transform: translateY(1em);
+}
+.car-card-container a:active {
+    transform: translateY(0.4em);
+}
+.car-card{
+    background-color: var(--sec-bg-clr);
+    width: var(--car-card-width);
+    height: var(--car-card-height);
+    border-radius: var(--car-card-border-rad);
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    position: relative;
+}
+.car-card img{
+    /*height: calc(var(--car-card-height)/2);*/
+    transform: translateY(-60px);
+    top: 0;
+    height: 100%;
+    border-radius: var(--car-card-border-rad);
+    
+}
+.car-card-body{
+    position: absolute;
+    bottom: 0;
+    background-color: var(--sec-bg-clr);
+    padding: 1em;
+    height: calc(var(--car-card-height)/2);
+    border-radius: var(--car-card-border-rad);
+    transition: transform 0.2s;
+    width: 100%;
+}
+.car-card-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

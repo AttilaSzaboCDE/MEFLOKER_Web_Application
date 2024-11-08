@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}Menetlevél rögzítés{% endblock %}
+
+{% block nav_buttons %}
+<li class="nav-item">
+    <a class="nav-link" href="{{ url_for('calendar.calendar') }}">Naptár nézet</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{{ url_for('waybills.waybill') }}">Menetlevél rögzítése</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{{ url_for('issuereportings.issuereporting') }}">Hiba jelentése</a>
+  </li> 
+{% endblock %}
+
+{% block content %}
+    <h1 class="index_h1">Üdvözlet, a Menetlevél és Flottakezelő rendszerben!</h1>
+    <p class="index_p">Választhat a rendelkezésre álló autók közül és rögzítheti a menetleveleit elektronikusan. Foglaljon autót előre, a foglalás menüpontban. Ha valami nincs rendben a gépjárművel, vagy meghibásodást tapasztal, kérjük jelentse a hibát a hiba bejelentő ürlapunkon.</p>
+
+    <div class="car-card-container">
+        {% for car in cars %}
+        <a href="{{ url_for('cars.display_car', car_licence_plate=car.licence_plate) }}">
+            <div class="car-card">
+                <img src="{{ url_for('static', filename='uploads/' + (car.image if car.image else 'placeholder.jpg')) }}" alt="Kép az autóról">
+                <div class="car-card-body">
+                    <div class="car-card-header">
+                        <h4 id="car-model">{{ car.brand }}</h4>
+                        <h5 id="car-licence-plate">{{ car.licence_plate }}</h5>
+                    </div>
+                    <div class="car-card-footer">
+                        icons {{ url_for('static', filename='uploads/' + (car.image if car.image else 'placeholder.jpg')) }}
+                    </div>
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+          
+    </div>
+    
+{% endblock %}

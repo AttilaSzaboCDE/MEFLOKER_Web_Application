@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='Styles/issuereporting.css') }}">
+{% endblock %}
+
+{% block title %}Jelentés{% endblock %}
+
+{% block nav_buttons %}
+<li class="nav-item">
+    <a class="nav-link" href="{{ url_for('main.index') }}">Kezdőlap</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{{ url_for('waybills.waybill') }}">Menetlevél rögzítése</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{{ url_for('issuereportings.issuereporting') }}">Hiba jelentése</a>
+  </li> 
+{% endblock %}
+
+{% block content %}
+<div class="issue_report_div">
+    <h1 class="form_issue_report_text">Hiba jelentése</h1>
+    <p  class="form_issue_report_text">Ha bármi probléma esik, esetleg a kocsival vagy a menetlevél rögzítés közben az alábbit kérlek töltsd ki!</p>
+   
+
+        <form action="/issuereporting" method="POST">
+            <label for="name">Név:</label>
+            <input type="text" id="name" name="name" required>
+    
+            <label for="license_plate">Rendszám:</label>
+            <input type="text" id="license_plate" name="license_plate" placeholder="ABC-123 vagy ABCD-123" required>
+    
+            <label for="id_code">Személyazonosító kód:</label>
+            <input type="text" id="id_code" name="id_code" required>
+    
+            <label for="message">Üzenet:</label>
+            <textarea id="message" name="message" required></textarea>
+    
+            <button class="btn btn-primary" type="submit">Elküldés</button>
+        </form>
+        {% if saved_time %}
+            <p>Az űrlap elküldve az időpontban: {{ saved_time }}</p>
+        {% endif %}
+</div>
+
+{% endblock %}
+
+
+

@@ -1,0 +1,13 @@
+your-flask-app/
+│
+├── app.py                    # Fő alkalmazás
+├── config.py                 # Konfigurációk [NINCS ILYEN]
+├── static/Assets/            # CSS, JS stb.
+├── templates/                # HTML sablonok
+├── models/                   # Adatbázis modellek
+│   └── datamodels.py             # Az adatbázis modellek
+├── routes/
+│   ├── __init__.py           # Route-ok inicializálása
+│   ├── cars.py               # Cars metódusok és route-ok
+│   └── tickets.py            # Tickets metódusok és route-ok
+└── migrations/               # Adatbázis migrációk (flask-migrate) [NINCS ILYEN]
