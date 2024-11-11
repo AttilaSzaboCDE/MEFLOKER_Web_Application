@@ -9,28 +9,29 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-strategy:
-  matrix:
-    Python38:
-      python.version: '3.8'
-    Python39:
-      python.version: '3.9'
-    Python310:
-      python.version: '3.10'
-    Python312:
-      python.version: '3.12'
 
 steps:
 - task: UsePythonVersion@0
   inputs:
-    versionSpec: '$(python.version)'
-  displayName: 'Use Python $(python.version)'
+    versionSpec: '3.x'  # Python verzió, itt 3.x verziót használunk
+    addToPath: true
 
 - script: |
-    python -m pip install --upgrade pip
-    pip install -r requirements.txt
-  displayName: 'Install dependencies'
+    python -m venv venv  # Virtuális környezet létrehozása
+    source venv/bin/activate  # Aktiváljuk a virtuális környezetet
+    pip install -r requirements.txt  # Függőségek telepítése
+  displayName: 'Set up Python environment and install dependencies'
 
 - script: |
-    python3 app.py
-  displayName: 'pytest'
+    source venv/bin/activate  # Aktiváljuk a virtuális környezetet
+    flask run --host=0.0.0.0 --port=8080  # Flask alkalmazás indítása
+  displayName: 'Run Flask application'
+  env:
+    FLASK_APP: 'app.py'  # Itt add meg a Flask alkalmazásod fő fájlját (pl. app.py)
+    FLASK_ENV: 'development'  # Fejlesztői környezet (változtatható)
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'  # Artifaktumok tárolása
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
